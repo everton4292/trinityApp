@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "895024643335",
+    "firebase_url": "https://trinityapp-9c768.firebaseio.com",
+    "project_id": "trinityapp-9c768",
+    "storage_bucket": "trinityapp-9c768.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895024643335:android:ada0f8f09deb4f475d59a2",
+        "android_client_info": {
+          "package_name": "com.everton.trinitychallengeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895024643335-hd5hpco06g595q153cj04v9fl6j15l1u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.everton.trinitychallengeapp",
+            "certificate_hash": "06127c2a75a6b8bf50cb74994a1e1deba6a93128"
+          }
+        },
+        {
+          "client_id": "895024643335-555skrhnk1ds3m1uljaurjp3d99365i2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALrij7LrVfN0HYjOxpfW0rCEJiaedX4zU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895024643335-555skrhnk1ds3m1uljaurjp3d99365i2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
