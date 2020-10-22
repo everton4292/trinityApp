@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.everton.trinitychallengeapp.R
 import com.everton.trinitychallengeapp.data.model.local.User
 import com.everton.trinitychallengeapp.util.FirebaseConfiguration
@@ -16,13 +18,24 @@ import kotlinx.android.synthetic.main.activity_cadastro.*
 
 class CadastroActivity : AppCompatActivity() {
 
-    lateinit var firebaseAuth: FirebaseAuth
+    private val viewModel: CadastroViewModel by lazy {
+        ViewModelProvider(this).get(CadastroViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro)
 
+        setupObservers()
         progressBarCadastro.visibility = View.GONE
+
+        viewModel.error.observe(this, Observer {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        })
+
+        viewModel.startAct.observe(this, Observer {
+            startActivity(Intent(this, LoginActivity::class.java))
+        })
 
         materialButtonRegistrar.setOnClickListener {
             if (validateFields()) {
@@ -30,41 +43,19 @@ class CadastroActivity : AppCompatActivity() {
                     email = textInputLayoutCadastroEmail.editText?.text.toString(),
                     password = textInputLayoutCadastroSenha.editText?.text.toString()
                 )
-                registerUser(user)
+                viewModel.registerUser(user, progressBarCadastro)
             }
         }
     }
 
-    fun registerUser(user: User) {
-        progressBarCadastro.visibility = View.VISIBLE
-        firebaseAuth = FirebaseConfiguration().getFirebaseAuth()
-        firebaseAuth.createUserWithEmailAndPassword(
-            user.email,
-            user.password
-        ).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                progressBarCadastro.visibility = View.GONE
-                Toast.makeText(this, "Cadastro com sucesso", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(applicationContext, LoginActivity::class.java))
-                finish()
-            } else {
-                var error = ""
-                progressBarCadastro.visibility = View.GONE
-                try {
-                    throw task.exception!!
-                } catch (e: FirebaseAuthWeakPasswordException) {
-                    error = "Digite uma senha mais forte"
-                } catch (e: FirebaseAuthInvalidCredentialsException) {
-                    error = "Digite um e-mail válido"
-                } catch (e: FirebaseAuthUserCollisionException) {
-                    error = "Essa conta já foi cadastrada"
-                } catch (e: Exception) {
-                    error = "ao cadastrar usuário, foi encontrado o erro: " + e.message
-                    e.printStackTrace()
-                }
-                Toast.makeText(this, "Erro: $error", Toast.LENGTH_LONG).show()
-            }
-        }
+    fun setupObservers(){
+        viewModel.error.observe(this, Observer {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        })
+
+        viewModel.startAct.observe(this, Observer {
+            startActivity(Intent(this, LoginActivity::class.java))
+        })
     }
 
     fun validateFields(): Boolean {
