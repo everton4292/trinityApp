@@ -7,16 +7,20 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.everton.trinitychallengeapp.R
 import com.everton.trinitychallengeapp.data.model.Photo
 import com.everton.trinitychallengeapp.presentation.login.LoginActivity
+import com.everton.trinitychallengeapp.util.EndlessRecyclerViewScrollListener
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
+
 
 class HomeActivity : AppCompatActivity() {
 
     private val homeAdapter: HomeAdapter by inject()
     private val homeViewModel: HomeViewModel by inject()
+    lateinit var layoutManager: LinearLayoutManager
     lateinit var preferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +28,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         homeViewModel.getMarsData()
         homeViewModel.listPhotos.observe(this, Observer {
-            if(it != null) updatePhotoList(it)
+            if (it != null) updatePhotoList(it)
         })
         loadRecyclerView()
 
@@ -54,11 +58,20 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun loadRecyclerView() {
-        val linearLayoutTodo = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        val linearLayoutHome = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         homeRecyclerView.apply {
             adapter = homeAdapter
             setHasFixedSize(true)
-            this.layoutManager = linearLayoutTodo
+            this.layoutManager = linearLayoutHome
         }
+
+        homeRecyclerView.addOnScrollListener(object :
+            EndlessRecyclerViewScrollListener(linearLayoutHome) {
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
+                homeViewModel.getMarsData()
+            }
+
+        })
     }
 }
