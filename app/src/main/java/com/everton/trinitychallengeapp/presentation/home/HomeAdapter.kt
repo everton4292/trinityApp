@@ -7,14 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.everton.trinitychallengeapp.R
-import com.everton.trinitychallengeapp.data.model.Data
 import com.everton.trinitychallengeapp.data.model.Photo
-import com.everton.trinitychallengeapp.data.model.Rover
 import kotlinx.android.synthetic.main.each_item.view.*
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
-    private val photos: MutableList<Photo> = mutableListOf()
+    private val photosList: MutableList<Photo> = mutableListOf()
     lateinit var context: Context
 
     inner class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,6 +21,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
             Glide.with(itemView.context).load(image).into(itemView.roverImage)
             itemView.textViewItemName.text = photo.rover.name
             itemView.textViewItemDate.text = photo.earth_date
+            itemView.textViewCameraName.text = photo.camera.name
 
         }
     }
@@ -35,7 +34,13 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return photos.size
+        return this.photosList.size
+    }
+
+    fun updateData(photos: List<Photo>){
+        photosList.clear()
+        photosList.addAll(photos)
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
@@ -43,6 +48,6 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     }
 
     private fun getItem(position: Int): Photo {
-        return photos[position]
+        return this.photosList[position]
     }
 }

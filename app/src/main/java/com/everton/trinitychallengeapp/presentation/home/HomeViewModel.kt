@@ -2,6 +2,7 @@ package com.everton.trinitychallengeapp.presentation.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.everton.trinitychallengeapp.data.model.Photo
 import com.everton.trinitychallengeapp.data.model.User
 import com.everton.trinitychallengeapp.data.repository.TrinityRepository
 import kotlinx.coroutines.CoroutineScope
@@ -12,16 +13,20 @@ import java.lang.Exception
 
 class HomeViewModel(private val trinityRepository: TrinityRepository) : ViewModel() {
 
+    private var listPhotosHelper: MutableList<Photo> = mutableListOf()
+    var listPhotos: MutableLiveData<MutableList<Photo>> = MutableLiveData()
 
     val scope = CoroutineScope(
         Job() + Dispatchers.Main
     )
 
-    fun getMarsData(){
+    fun getMarsData() {
         scope.launch {
-            try{
-                trinityRepository.getMarsData()
-            }catch (e: Exception){
+            try {
+                val data = trinityRepository.getMarsData()
+                listPhotosHelper.addAll(data.photos)
+                listPhotos.value = listPhotosHelper
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }

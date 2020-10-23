@@ -5,8 +5,10 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.everton.trinitychallengeapp.R
+import com.everton.trinitychallengeapp.data.model.Photo
 import com.everton.trinitychallengeapp.presentation.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
@@ -21,6 +23,9 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         homeViewModel.getMarsData()
+        homeViewModel.listPhotos.observe(this, Observer {
+            if(it != null) updatePhotoList(it)
+        })
         loadRecyclerView()
 
 
@@ -42,6 +47,10 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+    }
+
+    private fun updatePhotoList(photoList: List<Photo>) {
+        homeAdapter.updateData(photoList)
     }
 
     private fun loadRecyclerView() {
