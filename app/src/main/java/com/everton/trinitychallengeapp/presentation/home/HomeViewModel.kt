@@ -12,12 +12,20 @@ import java.lang.Exception
 
 class HomeViewModel(private val trinityRepository: TrinityRepository) : ViewModel() {
 
-    var errorDeleteToken = MutableLiveData<String>()
 
     val scope = CoroutineScope(
         Job() + Dispatchers.Main
     )
 
+    fun getMarsData(){
+        scope.launch {
+            try{
+                trinityRepository.getMarsData()
+            }catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
+    }
 
 
 }
