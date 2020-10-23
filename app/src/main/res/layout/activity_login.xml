@@ -13,10 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_app_home" />
+        app:srcCompat="@mipmap/ic_app_home_circle_round" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="@color/colorWhite"
         app:boxStrokeColor="@color/colorWhite"
+        app:hintTextColor="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/progressBarLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -67,6 +68,7 @@
         android:layout_marginTop="20dp"
         android:textColorHint="@color/colorWhite"
         app:boxStrokeColor="@color/colorWhite"
+        app:hintTextColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,47 +93,46 @@
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayoutLoginEmail"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayoutLoginEmail"
+        app:layout_constraintVertical_bias="0.204"
         app:srcCompat="@drawable/ic_baseline_email_24" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayoutLoginSenha"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayoutLoginSenha"
         app:srcCompat="@drawable/ic_baseline_lock_24" />
-
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/materialButtonEntrar"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="158dp"
         android:layout_height="47dp"
-        android:layout_marginTop="40dp"
         android:text="Login"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLoginSenha"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxRemember"
         app:strokeColor="@color/colorWhite" />
 
     <com.google.android.material.button.MaterialButton
@@ -145,6 +146,7 @@
         android:textColor="@color/colorWhite"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialButtonEntrar"
         app:strokeColor="@color/colorWhite" />
@@ -155,9 +157,9 @@
         android:layout_height="wrap_content"
         android:text="Manter-se conectado"
         android:textColor="@color/colorWhite"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLoginSenha" />
 
