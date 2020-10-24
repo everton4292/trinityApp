@@ -19,9 +19,9 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
         fun bind(photo: Photo) {
             val image = "${photo.img_src}".replace("http", "https")
             Glide.with(itemView.context).load(image).into(itemView.roverImage)
-            itemView.textViewItemName.text = photo.rover.name
+            itemView.textViewItemName.text = photo.rover?.name
             itemView.textViewItemDate.text = photo.earth_date
-            itemView.textViewCameraName.text = photo.camera.name
+            itemView.textViewCameraName.text = photo.camera?.name
 
         }
     }

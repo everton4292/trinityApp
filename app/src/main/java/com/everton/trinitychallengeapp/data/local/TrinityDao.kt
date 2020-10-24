@@ -1,21 +1,18 @@
 package com.everton.trinitychallengeapp.data.local
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.everton.trinitychallengeapp.data.model.User
+import com.everton.trinitychallengeapp.data.model.Data
+
 
 
 @Dao
 interface TrinityDao {
     @Insert
-    suspend fun saveAccessToken(user: User): Long
+    suspend fun saveLocalPhoto(localData: Data): Long
 
-    @Delete
-    suspend fun deleteAccessToken(user: User)
-
-    @Query("SELECT * FROM user_table")
-    suspend fun getUser(): MutableList<User>
+    @Query("SELECT * FROM data_table")
+    suspend fun getLocalPhoto(): Data
 
 }
