@@ -4,7 +4,7 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.everton.trinitychallengeapp.data.model.User
-import com.everton.trinitychallengeapp.data.repository.TrinityRepository
+import com.everton.trinitychallengeapp.domain.repository.TrinityRepository
 import com.everton.trinitychallengeapp.util.FirebaseConfiguration
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope

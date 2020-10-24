@@ -1,9 +1,9 @@
 package com.everton.trinitychallengeapp.data.repository
 
-import com.everton.trinitychallengeapp.data.local.TrinityDao
+import com.everton.trinitychallengeapp.data.source.local.TrinityDao
 import com.everton.trinitychallengeapp.data.model.Data
-import com.everton.trinitychallengeapp.data.model.Photo
-import com.everton.trinitychallengeapp.data.remote.NasaService
+import com.everton.trinitychallengeapp.data.source.remote.NasaService
+import com.everton.trinitychallengeapp.domain.repository.TrinityRepository
 
 class TrinityRepositoryImplementation(
     private val trinityDao: TrinityDao,
@@ -13,7 +13,7 @@ class TrinityRepositoryImplementation(
         return trinityDao.saveLocalPhoto(localData)
     }
 
-    override suspend fun getLocalPhoto(): Data {
+    override suspend fun getLocalData(): Data {
         return trinityDao.getLocalPhoto()
     }
 

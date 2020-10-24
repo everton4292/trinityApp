@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.everton.trinitychallengeapp.data.model.Data
 import com.everton.trinitychallengeapp.data.model.Photo
-import com.everton.trinitychallengeapp.data.repository.TrinityRepository
+import com.everton.trinitychallengeapp.domain.repository.TrinityRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -44,10 +44,10 @@ class HomeViewModel(private val trinityRepository: TrinityRepository) : ViewMode
         }
     }
 
-    fun getLocalData() {
+    private fun getLocalData() {
         scope.launch {
             try {
-                val data: Data = trinityRepository.getLocalPhoto()
+                val data: Data = trinityRepository.getLocalData()
                 listPhotosHelper.addAll(data.photos)
                 listPhotos.value = listPhotosHelper
             } catch (e: Exception) {

@@ -1,4 +1,4 @@
-package com.everton.trinitychallengeapp.data.local
+package com.everton.trinitychallengeapp.data.source.local
 
 import androidx.room.Dao
 import androidx.room.Insert

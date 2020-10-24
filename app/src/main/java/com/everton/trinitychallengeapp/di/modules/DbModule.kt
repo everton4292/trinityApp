@@ -1,7 +1,7 @@
 package com.everton.trinitychallengeapp.di.modules
 
 import androidx.room.Room
-import com.everton.trinitychallengeapp.data.local.TrinityDatabase
+import com.everton.trinitychallengeapp.data.source.local.TrinityDatabase
 import org.koin.dsl.module
 
 val dbModule = module {

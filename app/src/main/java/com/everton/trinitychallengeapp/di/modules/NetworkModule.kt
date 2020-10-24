@@ -1,9 +1,8 @@
 package com.everton.trinitychallengeapp.di.modules
 
-import com.everton.trinitychallengeapp.BuildConfig
-import com.everton.trinitychallengeapp.data.local.TrinityDao
-import com.everton.trinitychallengeapp.data.remote.NasaService
-import com.everton.trinitychallengeapp.data.repository.TrinityRepository
+import com.everton.trinitychallengeapp.data.source.local.TrinityDao
+import com.everton.trinitychallengeapp.data.source.remote.NasaService
+import com.everton.trinitychallengeapp.domain.repository.TrinityRepository
 import com.everton.trinitychallengeapp.data.repository.TrinityRepositoryImplementation
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

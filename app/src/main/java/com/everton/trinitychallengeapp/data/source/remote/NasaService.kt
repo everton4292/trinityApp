@@ -1,9 +1,7 @@
-package com.everton.trinitychallengeapp.data.remote
+package com.everton.trinitychallengeapp.data.source.remote
 
 import com.everton.trinitychallengeapp.data.model.Data
 import retrofit2.http.GET
-import retrofit2.http.Path
-
 
 
 interface NasaService {
