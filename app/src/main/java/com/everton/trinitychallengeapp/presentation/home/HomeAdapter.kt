@@ -21,7 +21,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
         fun bind(photo: Photo) {
 
             val formatDate: Date? = SimpleDateFormat("yyyy-MM-dddd", Locale("por")).parse(photo.earth_date)
-            val formattedDate = SimpleDateFormat("dd 'de' MMMM 'de' yyyy", Locale("por")).format(formatDate)
+            val formattedDate = SimpleDateFormat("dd 'de' MMMM\n 'de' yyyy", Locale("por")).format(formatDate)
 
             val image = "${photo.img_src}".replace("http", "https")
             Glide.with(itemView.context).load(image).into(itemView.roverImage)
