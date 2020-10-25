@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import org.koin.android.ext.android.inject
 import com.everton.trinitychallengeapp.R
 import com.everton.trinitychallengeapp.data.model.User
 import com.everton.trinitychallengeapp.presentation.login.LoginActivity
@@ -17,9 +17,7 @@ import java.util.regex.Pattern
 
 class CadastroActivity : AppCompatActivity() {
 
-    private val cadastroViewModel: CadastroViewModel by lazy {
-        ViewModelProvider(this).get(CadastroViewModel::class.java)
-    }
+    private val cadastroViewModel: CadastroViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
