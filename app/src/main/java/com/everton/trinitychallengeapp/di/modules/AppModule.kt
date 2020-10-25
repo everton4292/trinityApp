@@ -12,7 +12,7 @@ val AppModule = module {
     single { createTrinityRepository(get(), get()) }
 
     viewModel { HomeViewModel(get()) }
-    viewModel { LoginViewModel(get()) }
+    viewModel { LoginViewModel() }
     viewModel { CadastroViewModel() }
 
     factory { HomeAdapter() }

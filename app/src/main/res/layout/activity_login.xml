@@ -8,7 +8,7 @@
     tools:context=".presentation.login.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageViewLoginLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
@@ -16,20 +16,22 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_app_home_circle_round" />
+        app:srcCompat="@mipmap/ic_app_home_circle_round"
+        android:contentDescription="@string/logo" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Trinity"
+        android:text="@string/trinity"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLoginLogo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutLoginEmail"
@@ -50,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorLowOpacity"
-            android:hint="E-mail"
+            android:hint="@string/e_mail"
             android:inputType="textEmailAddress"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
@@ -79,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorLowOpacity"
-            android:hint="Senha"
+            android:hint="@string/senha"
             android:inputType="textPassword"
             android:textColor="@color/colorWhite" />
 
@@ -98,19 +100,20 @@
 
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageViewLoginEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewPasswordIcon"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayoutLoginEmail"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayoutLoginEmail"
         app:layout_constraintVertical_bias="0.204"
-        app:srcCompat="@drawable/ic_baseline_email_24" />
+        app:srcCompat="@drawable/ic_baseline_email_24"
+        android:contentDescription="@string/login_email_icon" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageViewPasswordIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -118,14 +121,15 @@
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayoutLoginSenha"
-        app:srcCompat="@drawable/ic_baseline_lock_24" />
+        app:srcCompat="@drawable/ic_baseline_lock_24"
+        android:contentDescription="@string/login_password_icon" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/materialButtonEntrar"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="158dp"
         android:layout_height="47dp"
-        android:text="Login"
+        android:text="@string/login"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         app:cornerRadius="10dp"
@@ -141,7 +145,7 @@
         android:layout_width="158dp"
         android:layout_height="47dp"
         android:layout_marginTop="5dp"
-        android:text="Cadastro"
+        android:text="@string/cadastro"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         app:cornerRadius="10dp"
@@ -155,13 +159,27 @@
         android:id="@+id/checkBoxRemember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Manter-se conectado"
+        android:text="@string/manter_se_conectado"
         android:textColor="@color/colorWhite"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLoginSenha" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textViewLoginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutLoginEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialTextView2"
+        app:layout_constraintVertical_bias="0.583" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

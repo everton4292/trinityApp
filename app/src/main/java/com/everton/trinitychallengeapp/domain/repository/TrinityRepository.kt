@@ -4,11 +4,11 @@ import com.everton.trinitychallengeapp.data.model.Data
 
 
 interface TrinityRepository {
-    //local
+    //local functions to access room database
     suspend fun saveLocalData(localData: Data): Long
     suspend fun getLocalData(): Data
 
-    //remote
+    //remote functions to fetch data from API using retrofit
     suspend fun getMarsData(): Data
 
 }

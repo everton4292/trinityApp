@@ -29,19 +29,20 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         progressBarLogin.visibility = View.GONE
+
         setupObservers()
 
         sharedPref = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
         isRemembered = sharedPref.getBoolean("CHECKBOX", false)
 
-        if(isRemembered){
+        if (isRemembered) {
             startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
         }
 
-        val cadastroIntent = Intent(this, CadastroActivity::class.java)
-
         materialButtonIrParaCadastro.setOnClickListener {
+            val cadastroIntent = Intent(this, CadastroActivity::class.java)
             startActivity(cadastroIntent)
+            overridePendingTransition(R.anim.enter, R.anim.exit)
         }
 
         materialButtonEntrar.setOnClickListener {
@@ -67,10 +68,12 @@ class LoginActivity : AppCompatActivity() {
             editor.putString("USER_EMAIL", user.email)
             editor.putBoolean("CHECKBOX", checked)
             editor.apply()
-            startActivity(Intent(this, HomeActivity::class.java).apply {
+            val homeIntent = Intent(this, HomeActivity::class.java).apply {
                 putExtra("USER_EMAIL", user.email)
             }
-            )
+            startActivity(homeIntent)
+            overridePendingTransition(R.anim.enter, R.anim.exit)
+            editTextLoginSenha.text?.clear()
         })
     }
 

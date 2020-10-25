@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 import com.everton.trinitychallengeapp.R
 import com.everton.trinitychallengeapp.data.model.Photo
 import kotlinx.android.synthetic.main.each_item.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
@@ -17,10 +19,14 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
 
     inner class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(photo: Photo) {
+
+            val formatDate: Date? = SimpleDateFormat("yyyy-MM-dddd", Locale("por")).parse(photo.earth_date)
+            val formattedDate = SimpleDateFormat("dd 'de' MMMM 'de' yyyy", Locale("por")).format(formatDate)
+
             val image = "${photo.img_src}".replace("http", "https")
             Glide.with(itemView.context).load(image).into(itemView.roverImage)
             itemView.textViewItemName.text = photo.rover?.name
-            itemView.textViewItemDate.text = photo.earth_date
+            itemView.textViewItemDate.text = formattedDate
             itemView.textViewCameraName.text = photo.camera?.name
 
         }

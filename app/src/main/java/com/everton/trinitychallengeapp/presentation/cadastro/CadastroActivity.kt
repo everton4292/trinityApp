@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_cadastro.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
+
 class CadastroActivity : AppCompatActivity() {
 
     private val cadastroViewModel: CadastroViewModel by lazy {
@@ -36,6 +37,11 @@ class CadastroActivity : AppCompatActivity() {
                 cadastroViewModel.registerUser(user, progressBarCadastro)
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun setupObservers() {

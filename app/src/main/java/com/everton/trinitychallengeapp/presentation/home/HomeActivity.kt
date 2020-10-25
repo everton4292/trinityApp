@@ -3,10 +3,8 @@ package com.everton.trinitychallengeapp.presentation.home
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,8 +15,6 @@ import com.everton.trinitychallengeapp.presentation.login.LoginActivity
 import com.everton.trinitychallengeapp.util.EndlessRecyclerViewScrollListener
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.ext.android.inject
-import java.lang.Exception
-
 
 class HomeActivity : AppCompatActivity() {
 
@@ -30,14 +26,15 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
         homeViewModel.getMarsData()
 
         homeViewModel.listPhotos.observe(this, Observer {
             if (it != null) updatePhotoList(it)
         })
+        homeViewModel.errorRoom.observe(this, Observer {
+            Toast.makeText(this, "Erro ao acessar dados do cache", Toast.LENGTH_LONG).show()
+        })
         loadRecyclerView()
-
 
         preferences = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
 
@@ -55,8 +52,14 @@ class HomeActivity : AppCompatActivity() {
             editor.clear()
             editor.apply()
             startActivity(Intent(this, LoginActivity::class.java))
+            overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
             finish()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun updatePhotoList(photoList: List<Photo>) {
@@ -77,8 +80,6 @@ class HomeActivity : AppCompatActivity() {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
                 homeViewModel.getMarsData()
             }
-
         })
     }
-
 }

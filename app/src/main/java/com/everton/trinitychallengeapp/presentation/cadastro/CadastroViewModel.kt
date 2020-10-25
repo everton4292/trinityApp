@@ -2,17 +2,18 @@ package com.everton.trinitychallengeapp.presentation.cadastro
 
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.everton.trinitychallengeapp.data.model.User
+import com.everton.trinitychallengeapp.presentation.BaseViewModel
 import com.everton.trinitychallengeapp.util.FirebaseConfiguration
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 
-class CadastroViewModel : ViewModel() {
+class CadastroViewModel : BaseViewModel() {
 
-    lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseAuth: FirebaseAuth
     var errorCadastro = MutableLiveData<String>()
     var startCadastro = MutableLiveData<Unit>()
 
@@ -31,13 +32,16 @@ class CadastroViewModel : ViewModel() {
                 try {
                     throw task.exception!!
                 } catch (e: FirebaseAuthWeakPasswordException) {
-                    errorCadastro.value = "Digite uma senha mais forte"
+                    errorCadastro.value = "A senha deve conter de 8 a 16 digitos e conter pelo menos uma letra\n" +
+                            "maiscula, uma minuscula, um número e um caractér especial."
                 } catch (e: FirebaseAuthInvalidCredentialsException) {
                     errorCadastro.value = "Digite um e-mail válido"
                 } catch (e: FirebaseAuthUserCollisionException) {
-                    errorCadastro.value = "Essa conta já foi cadastrada"
+                    errorCadastro.value = "Essa conta já existe"
+                }catch (e: FirebaseNetworkException){
+                    errorCadastro.value = "Erro de rede, verifique a conexão com a internet"
                 } catch (e: Exception) {
-                    errorCadastro.value = "ao cadastrar usuário, foi encontrado o erro: " + e.message
+                    errorCadastro.value = "ao cadastrar usuário, foi encontrado o erro: " + e.message + " contate o admnistrador"
                     e.printStackTrace()
                 }
             }

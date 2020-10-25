@@ -1,24 +1,18 @@
 package com.everton.trinitychallengeapp.presentation.home
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.everton.trinitychallengeapp.data.model.Data
 import com.everton.trinitychallengeapp.data.model.Photo
 import com.everton.trinitychallengeapp.domain.repository.TrinityRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import com.everton.trinitychallengeapp.presentation.BaseViewModel
 import kotlinx.coroutines.launch
 
 
-class HomeViewModel(private val trinityRepository: TrinityRepository) : ViewModel() {
+class HomeViewModel(private val trinityRepository: TrinityRepository) : BaseViewModel() {
 
     private var listPhotosHelper: MutableList<Photo> = mutableListOf()
     var listPhotos: MutableLiveData<MutableList<Photo>> = MutableLiveData()
-
-    val scope = CoroutineScope(
-        Job() + Dispatchers.Main
-    )
+    var errorRoom = MutableLiveData<Unit>()
 
     fun getMarsData() {
         scope.launch {
@@ -39,6 +33,7 @@ class HomeViewModel(private val trinityRepository: TrinityRepository) : ViewMode
             try {
                 trinityRepository.saveLocalData(localData)
             } catch (e: Exception) {
+                errorRoom.value = Unit
                 e.printStackTrace()
             }
         }
@@ -51,6 +46,7 @@ class HomeViewModel(private val trinityRepository: TrinityRepository) : ViewMode
                 listPhotosHelper.addAll(data.photos)
                 listPhotos.value = listPhotosHelper
             } catch (e: Exception) {
+                errorRoom.value = Unit
                 e.printStackTrace()
             }
         }

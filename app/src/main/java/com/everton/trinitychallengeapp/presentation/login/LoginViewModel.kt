@@ -2,25 +2,17 @@ package com.everton.trinitychallengeapp.presentation.login
 
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.everton.trinitychallengeapp.data.model.User
-import com.everton.trinitychallengeapp.domain.repository.TrinityRepository
+import com.everton.trinitychallengeapp.presentation.BaseViewModel
 import com.everton.trinitychallengeapp.util.FirebaseConfiguration
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 
-class LoginViewModel(private val trinityRepository: TrinityRepository) : ViewModel() {
+
+class LoginViewModel : BaseViewModel() {
 
     lateinit var firebaseAuth: FirebaseAuth
     var userLoginStart = MutableLiveData<Unit>()
     var errorLogin = MutableLiveData<String>()
-    var errorSaveToken = MutableLiveData<String>()
-
-    val scope = CoroutineScope(
-        Job() + Dispatchers.Main
-    )
 
     fun startLogin(user: User, progressBarLogin: View) {
         firebaseAuth = FirebaseConfiguration().getFirebaseAuth()

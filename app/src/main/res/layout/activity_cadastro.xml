@@ -12,14 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Cadastro"
+        android:text="@string/cadastro"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutCadastroEmail"
@@ -32,14 +32,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextCadastroEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorLowOpacity"
-            android:hint="E-mail"
+            android:hint="@string/e_mail"
             android:inputType="textEmailAddress"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorLowOpacity"
-            android:hint="Senha"
+            android:hint="@string/senha"
             android:inputType="textPassword"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
@@ -93,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorLowOpacity"
-            android:hint="Confirmar Senha"
+            android:hint="@string/confirmar_senha"
             android:inputType="textPassword"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite"
@@ -108,7 +108,7 @@
         android:layout_width="158dp"
         android:layout_height="47dp"
         android:layout_marginTop="16dp"
-        android:text="Registrar"
+        android:text="@string/registrar"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         app:cornerRadius="10dp"
@@ -119,15 +119,16 @@
         app:strokeColor="@color/colorWhite" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_app_home" />
+        app:srcCompat="@mipmap/ic_app_home_circle_round"
+        android:contentDescription="@string/logo" />
 
     <ProgressBar
         android:id="@+id/progressBarCadastro"
@@ -141,19 +142,20 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewEmailRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewCadastroPassword"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayoutCadastroEmail"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayoutCadastroEmail"
         app:layout_constraintVertical_bias="0.256"
-        app:srcCompat="@drawable/ic_baseline_email_24" />
+        app:srcCompat="@drawable/ic_baseline_email_24"
+        android:contentDescription="@string/email_for_register" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageViewCadastroPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutCadastroSenha"
@@ -161,17 +163,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textInputLayoutCadastroSenha"
-        app:srcCompat="@drawable/ic_baseline_lock_24" />
+        app:srcCompat="@drawable/ic_baseline_lock_24"
+        android:contentDescription="@string/password_for_register" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/imageViewConfirmPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutCadastroConfirmaSenha"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayoutCadastroConfirmaSenha"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCadastroPassword"
         app:layout_constraintVertical_bias="0.739"
-        app:srcCompat="@drawable/ic_baseline_event_available_24" />
+        app:srcCompat="@drawable/ic_baseline_event_available_24"
+        android:contentDescription="@string/confirm_password_image" />
 </androidx.constraintlayout.widget.ConstraintLayout>

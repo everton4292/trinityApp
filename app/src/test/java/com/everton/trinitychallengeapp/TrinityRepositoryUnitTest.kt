@@ -50,5 +50,4 @@ class TrinityRepositoryUnitTest {
             assertNotSame(Photo(), repository.getMarsData())
         }
     }
-
 }
