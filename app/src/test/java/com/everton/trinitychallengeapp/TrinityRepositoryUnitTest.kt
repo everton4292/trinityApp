@@ -4,6 +4,7 @@ import com.everton.trinitychallengeapp.data.model.Data
 import com.everton.trinitychallengeapp.data.model.Photo
 import com.everton.trinitychallengeapp.data.repository.TrinityRepositoryImplementation
 import com.everton.trinitychallengeapp.domain.repository.TrinityRepository
+import com.everton.trinitychallengeapp.presentation.login.LoginActivity
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.mockito.Mock
@@ -26,6 +27,7 @@ class TrinityRepositoryUnitTest {
             assertEquals(Data(), repository.getMarsData())
         }
     }
+
 
     @Test
     fun `Should fetch data from local storage and return Data`(){
